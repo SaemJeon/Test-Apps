@@ -23,7 +23,7 @@ module.exports = (app) => {
 
   app.on("push", async (context) => {
     app.log("Some change is pushed");
-    app.log(context);
+    app.log(context.github);
     app.log(context.octokit.pulls.listReviews({
       owner: "imodeljs",
       repo: "imodeljs",
