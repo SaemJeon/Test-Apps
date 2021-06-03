@@ -12,7 +12,10 @@ module.exports = (app) => {
 
   app.on("pull_request.edited", async (context) => {
     app.log("Pull request edited");
-    app.log(context);
+    app.log(context.octokit.pulls.get({
+      owner: "imodeljs",
+      repo: "imodeljs"
+    }));
     return context.octokit.issues.createComment(
       context.issue({ body: "Pull request edited" })
     );
