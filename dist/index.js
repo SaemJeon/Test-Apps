@@ -83346,12 +83346,14 @@ module.exports = (app) => {
   });
 
   app.on("pull_request.edited", async (context) => {
+    app.log("Pull request edited");
     return context.octokit.issues.createComment(
       context.issue({ body: "Pull request edited" })
     );
   });
 
   app.on("push", async (context) => {
+    app.log("Some change is pushed");
     return context.octokit.issues.createComment(
       context.issue({ body: "Some change is pushed" })
     );
