@@ -9,4 +9,10 @@ module.exports = (app) => {
       context.issue({ body: "Hello, World!" })
     );
   });
+
+  app.on("pull_request.edited", async (context) => {
+    return context.octokit.issues.createComment(
+      context.issue({ body: "Pull request edited" })
+    );
+  });
 };
