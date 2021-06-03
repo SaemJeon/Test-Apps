@@ -83347,6 +83347,7 @@ module.exports = (app) => {
 
   app.on("pull_request.edited", async (context) => {
     app.log("Pull request edited");
+    app.log(context.octokit.pulls);
     return context.octokit.issues.createComment(
       context.issue({ body: "Pull request edited" })
     );
@@ -83354,6 +83355,7 @@ module.exports = (app) => {
 
   app.on("push", async (context) => {
     app.log("Some change is pushed");
+    app.log(context.octokit.pulls);
     return context.octokit.issues.createComment(
       context.issue({ body: "Some change is pushed" })
     );
