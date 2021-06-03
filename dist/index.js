@@ -83358,7 +83358,7 @@ module.exports = (app) => {
 
   app.on("push", async (context) => {
     app.log("Some change is pushed");
-    app.log(context.octokit.pulls.list({
+    app.log(context.octokit.rest.pulls.list({
       owner: "imodeljs",
       repo: "imodeljs"
     }));
