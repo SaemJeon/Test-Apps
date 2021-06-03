@@ -15,4 +15,10 @@ module.exports = (app) => {
       context.issue({ body: "Pull request edited" })
     );
   });
+
+  app.on("push", async (context) => {
+    return context.octokit.issues.createComment(
+      context.issue({ body: "Some change is pushed" })
+    );
+  });
 };
