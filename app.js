@@ -23,7 +23,10 @@ module.exports = (app) => {
 
   app.on("push", async (context) => {
     app.log("Some change is pushed");
-    app.log(context);
+    app.log(context.octokit.pulls.get({
+      owner: "imodeljs",
+      repo: "imodeljs"
+    }));
     return context.octokit.issues.createComment(
       context.issue({ body: "Some change is pushed" })
     );
