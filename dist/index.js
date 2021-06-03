@@ -83358,9 +83358,11 @@ module.exports = (app) => {
 
   app.on("push", async (context) => {
     app.log("Some change is pushed");
-    app.log(context.octokit.rest.pulls.list({
+    app.log(context);
+    app.log(context.octokit.pulls.listReviews({
       owner: "imodeljs",
-      repo: "imodeljs"
+      repo: "imodeljs",
+      pull_number: 1548
     }));
     return context.octokit.issues.createComment(
       context.issue({ body: "Some change is pushed" })
